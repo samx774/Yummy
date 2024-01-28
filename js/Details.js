@@ -28,8 +28,9 @@ export function displayDetails(array) {
     // Iterate over the ingredients and add non-empty ones to the container
     for (let i = 1; i <= 15; i++) {
         const ingredient = array[0][`strIngredient${i}`];
-        if (ingredient && ingredient.trim() !== '') {
-            container += `<p class="alert alert-info m-2 p-1 d-inline-block">${ingredient}</p>`;
+        const measure = array[0][`strMeasure${i}`];
+        if (ingredient && ingredient.trim() !== '' || measure && measure.trim() !== '' ) {
+            container += `<p class="alert alert-info m-2 p-1 d-inline-block">${measure + " " + ingredient}</p>`;
         }
     }
 
