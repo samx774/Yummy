@@ -225,17 +225,10 @@ function rePasswordValidation(rePassword) {
 }
 
 // Function to check if all validations are correct
-function validateForm() {
-  // Check if all validation functions return true
-  let isNameValid = nameValidation(nameInput.value);
-  let isEmailValid = emailValidation(emailInput.value);
-  let isPhoneValid = phoneValidation(phoneInput.value);
-  let isAgeValid = ageValidation(ageInput.value);
-  let isPasswordValid = passwordValidation(passwordInput.value);
-  let isRePasswordValid = rePasswordValidation(rePasswordInput.value);
+function validateForm(){
 
   // Check if all validations are correct
-  if (isNameValid && isEmailValid && isPhoneValid && isAgeValid && isPasswordValid && isRePasswordValid) {
+  if (nameValidation(nameInput.value) && emailValidation(emailInput.value) && phoneValidation(phoneInput.value) && passwordValidation(passwordInput.value) && passwordValidation(passwordInput.value) && rePasswordValidation(rePasswordInput.value)) {
     // Remove the attribute from the desired element
     $(btn).removeClass('disabled');
   }else{
@@ -244,9 +237,6 @@ function validateForm() {
 }
 
 // Input Validation Functions
-// Define your input validation functions here (nameValidation, emailValidation, etc.)
-
-// Event listeners for input fields
 nameInput.addEventListener("input", function () {
   nameValidation(this.value);
   validateForm(); // Call the function to check if all validations are correct

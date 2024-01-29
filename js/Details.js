@@ -7,8 +7,10 @@ export async function getMealDetails(id){
 export function displayDetails(array) {
     $("#search").addClass('d-none');
     $(".inner-loading").fadeOut(500);
+    
     // Check if strTags is not null, else set it to an empty string
-    const tags = array[0].strTags !== null ? array[0].strTags : "";
+    const tags = array[0].strTags !== null ? array[0].strTags.split(',') : [];
+
     let container = `
     <div class="col-md-4">
         <img src="${array[0].strMealThumb}" alt="meal-img" class="w-100 rounded-3">
@@ -37,8 +39,14 @@ export function displayDetails(array) {
     container += `
             </div>
             <div class="tags">
-                <h3>Tags :</h3>
-                <p class="alert alert-danger p-1 d-inline-block">${tags}</p>
+                <h3>Tags :</h3>`;
+
+    // Append <p> tags for each word in the tags array
+    tags.forEach(tag => {
+        container += `<p class="alert alert-danger me-2 p-1 d-inline-block">${tag}</p>`;
+    });
+
+    container += `
             </div>
             <a href="${array[0].strSource}" target="_blank"><button class="btn btn-success">Source</button></a>
             <a href="${array[0].strYoutube}" target="_blank"><button class="btn btn-danger">Youtube</button></a>
@@ -49,3 +57,4 @@ export function displayDetails(array) {
     document.getElementById('meals').innerHTML = container;
     $(".inner-loading").fadeOut(500);
 }
+
