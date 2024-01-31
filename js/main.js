@@ -51,6 +51,7 @@ export function displayMeals(array) {
         `;
   }
   document.getElementById("meals").innerHTML = container;
+  $(".loading").fadeOut(500);
   $(".inner-loading").fadeOut(500);
 }
 
@@ -152,10 +153,6 @@ function closeNav() {
 $(".open").click(openNav);
 $(".close").click(closeNav);
 
-// Hide loading animation when the document is ready
-$(document).ready(function () {
-  $(".loading").fadeOut(500);
-});
 
 
 // Input Validation Functions
@@ -228,7 +225,7 @@ function rePasswordValidation(rePassword) {
 function validateForm(){
 
   // Check if all validations are correct
-  if (nameValidation(nameInput.value) && emailValidation(emailInput.value) && phoneValidation(phoneInput.value) && passwordValidation(passwordInput.value) && passwordValidation(passwordInput.value) && rePasswordValidation(rePasswordInput.value)) {
+  if (nameValidation(nameInput.value) && emailValidation(emailInput.value) && phoneValidation(phoneInput.value) && ageValidation(ageInput.value) && passwordValidation(passwordInput.value) && rePasswordValidation(rePasswordInput.value)) {
     // Remove the attribute from the desired element
     $(btn).removeClass('disabled');
   }else{
